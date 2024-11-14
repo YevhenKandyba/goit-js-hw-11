@@ -1,7 +1,9 @@
 import { fetchImages } from './js/pixabay-api.js';
 import { renderGallery } from './js/render-functions.js';
 import SimpleLightbox from "simplelightbox";
+import iziToast from "izitoast";
 import "simplelightbox/dist/simple-lightbox.min.css";
+import "izitoast/dist/css/iziToast.min.css";
 
 let lightbox = new SimpleLightbox('.gallery a');
 
@@ -21,6 +23,7 @@ document.querySelector('.form').addEventListener('submit', async function (event
         renderGallery(images);
         lightbox.refresh();
     } catch (error) {
+        iziToast.error({ message: error.message || "An error occurred. Please try again." });
         console.error("Error fetching images:", error);
     }
 });

@@ -1,6 +1,3 @@
-import iziToast from "izitoast";
-import "izitoast/dist/css/iziToast.min.css";
-
 const API_KEY = '47065564-a622eb5e999173b8ae38c4180';
 const BASE_URL = 'https://pixabay.com/api/';
 
@@ -14,12 +11,10 @@ export async function fetchImages(query) {
         const response = await fetch(url);
         const data = await response.json();
         if (data.hits.length === 0) {
-            iziToast.error({ message: "Sorry, there are no images matching your search query." });
-            return [];
+            throw new Error("Sorry, there are no images matching your search query. Please try again!");
         }
         return data.hits;
     } catch (error) {
-        iziToast.error({ message: "An error occurred. Please try again." });
         throw error;
     } finally {
         loadingSpinner.style.display = 'none';
