@@ -1,3 +1,5 @@
+import iziToast from "izitoast";
+
 const API_KEY = '47065564-a622eb5e999173b8ae38c4180';
 const BASE_URL = 'https://pixabay.com/api/';
 
