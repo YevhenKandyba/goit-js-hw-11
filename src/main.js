@@ -21,6 +21,12 @@ document.querySelector('.form').addEventListener('submit', async function (event
     
     try {
         const images = await fetchImages(query);
+
+        if (!images) {
+            
+            return;
+        }
+
         renderGallery(images);
         lightbox.refresh();
     } catch (error) {
